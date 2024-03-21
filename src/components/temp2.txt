@@ -1,5 +1,5 @@
 import { ConnectWallet } from "@thirdweb-dev/react";
-import "./styles/Home.css";
+import "../styles/Home.css";
 
 export default function Home() {
   return (
@@ -14,16 +14,17 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                thirdweb.
+                NFT CERTS
               </a>
             </span>
+            {" "}by PSG-CT
           </h1>
 
           <p className="description">
-            Get started by configuring your desired network in{" "}
-            <code className="code">src/index.js</code>, then modify the{" "}
-            <code className="code">src/App.js</code> file!
+            Connect your MetaMask wallet integrated with{" "}
+            <a href="https://snaps.metamask.io/snap/npm/blockchain-lab-um/masca/">Masca</a> to continue.
           </p>
+
 
           <div className="connect">
             <ConnectWallet />
@@ -90,5 +91,38 @@ export default function Home() {
         </div>
       </div>
     </main>
+  );
+}
+
+
+
+app.jsx
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import StudHome from './components/StudHome'; // Make sure this is the correct path
+import Login from './components/Login';
+import './styles/globals.css';
+
+export default function App() {
+  const [user, setUser] = useState(null);
+
+  const handleLogin = (role) => {
+    setUser({ role: role });
+    // No navigation code here, we'll use the Routes to handle it
+  };
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login onLogin={handleLogin} />} />
+        {/* Conditional rendering based on user role */}
+        <Route
+          path="/studhome"
+          element={user?.role === 'student' ? <StudHome /> : <Navigate replace to="/" />}
+        />
+        {/* Other routes can be added here */}
+      </Routes>
+    </Router>
   );
 }

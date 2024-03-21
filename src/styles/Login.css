@@ -1,0 +1,77 @@
+/* Assuming a dark theme similar to the provided screenshot */
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Fullscreen container for login */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #121212; /* Dark background */
+  color: #fff; /* White text color */
+}
+
+.login-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Increased gap for better spacing */
+}
+
+/* Style buttons and inputs */
+.login-container button,
+.login-container input[type="submit"] {
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000; /* Black text color for contrast */
+  background-color: #f0f0f0; /* Light background for the button */
+  border: none;
+  border-radius: 50px; /* Rounded edges */
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow for depth */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Interactive states */
+.login-container button:hover,
+.login-container input[type="submit"]:hover {
+  background-color: #007bff; /* Highlight color on hover */
+  color: #fff; /* White text on hover */
+}
+
+.login-container button:active,
+.login-container input[type="submit"]:active {
+  transform: scale(0.95); /* Slight push effect on click */
+}
+
+/* Adjustments for different screen sizes */
+@media (max-width: 768px) {
+  .login-container form {
+    width: 90%;
+  }
+  
+  .login-container button,
+  .login-container input[type="submit"] {
+    width: 100%; /* Full-width on smaller screens */
+  }
+}
